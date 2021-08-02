@@ -6,6 +6,7 @@ function App (){
 
 <>
     <Header></Header>
+    <p>Tienda de Productos Eco-Friendly, Reutilizables y Reciclables</p>
 </>
     );
 }

@@ -7,9 +7,9 @@ function Header (){
 
     return(
         <header>
-            <h1 className="titulo">Zero Waste Store</h1>
+            <a href="App.js"><h1 className="titulo">Zero Waste Store</h1></a>
             <NavBar/>
-            <button type="button" className="btn btn-dark">Carrito</button>
+            <CartWidget/>
             <hr></hr>
         </header>
     );
