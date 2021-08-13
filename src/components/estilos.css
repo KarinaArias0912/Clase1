@@ -1,6 +1,11 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
 .titulo{
     text-align: center;
     font-size: 3rem;
+    padding-top: 10px;
 }
 
 a{
@@ -11,6 +16,12 @@ a{
 
 .carritoContainer{
     display: flex;
-    padding: 10px, 30px;
+    justify-content: left;
+    padding: 2px, 2px, 30px, 650px;
 
+}
+
+.textoParrafo{
+    text-align: center;
+    font-size: 1rem;
 }

@@ -7,12 +7,8 @@ import CartWidget from "./CartWidget";
 function itemListContainer(){
     return(
         <>
-        <Header/>
-        <NavBar/>
-        <div>
-            <h3>Mi Carrito</h3>
-            <p>Lista de Compras:</p>
-        </div>
+            <h3>Carrito de Compras</h3>
+            <p>Lista de Compras: </p>
         </>
     );
 }

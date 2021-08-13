@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import estilos from "./estilos.css";
 
+
 function NavBar(){
     return(
         <nav className="nav justify-content-center navbar navbar-light">

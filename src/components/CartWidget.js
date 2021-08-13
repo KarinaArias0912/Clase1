@@ -6,9 +6,10 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import itemListContainer from "./itemListContainer";
+import estilos from "./estilos.css";
 
 function CartWidget () {
-    const [itemCount, setItemCount] = React.useState(1);
+    const [ItemCount, setItemCount] = React.useState(1);
 
     return(
         <div className="carritoContainer">
