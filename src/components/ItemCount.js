@@ -20,7 +20,7 @@ function ItemCount(){
 
     return(
         <>
-        <p>Productos: {contador}</p>
+        <p className="subTitulo">{contador}</p>
         <button type="button" className="btn btn-light">Agregar al Carrito</button>
         <button type="button" className="btn btn-light" onClick={sumaContador}>+</button>
         <button type="button" className="btn btn-light" onClick={restaContador}>-</button>

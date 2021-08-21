@@ -7,8 +7,7 @@ import CartWidget from "./CartWidget";
 function itemListContainer(){
     return(
         <>
-            <h3>Carrito de Compras</h3>
-            <p>Lista de Compras: </p>
+            
         </>
     );
 }
