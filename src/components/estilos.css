@@ -17,8 +17,6 @@ a{
 .carritoContainer{
     display: flex;
     justify-content: left;
-    padding: 2px, 2px, 30px, 650px;
-
 }
 
 .textoParrafo{
