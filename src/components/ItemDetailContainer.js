@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 const ItemDetailContainer = () => {
 
   const onAdd = (cantidad) => {
-  console.log(`Has agregado al carrito ${cantidad} productos`) }
+    console.log(`Has agregado al carrito ${cantidad} productos`) }
 
     const [items, setItems] = useState([])
     const id = useParams();
@@ -23,18 +23,18 @@ const ItemDetailContainer = () => {
       const getItem = () => {
   
   
-        const promesa = new Promise ((res, rej) => {
-          setTimeout(() => {
-  
-            if(id.id) {
-              res(items.filter(items => items.id == id.id))}
-              
-          }, 2000)
-        })
+          const promesa = new Promise ((res, rej) => {
+            setTimeout(() => {
+    
+              if(id.id) {
+                res(items.filter(items => items.id == id.id))}
+                
+            }, 2000)
+          })
         return promesa;
       }
   
-  return (
+    return (
     <>
        <div className="container">
             {items.map(producto=> {
@@ -42,5 +42,6 @@ const ItemDetailContainer = () => {
         </div>
     </>)    
     }
+  
 
 export default ItemDetailContainer

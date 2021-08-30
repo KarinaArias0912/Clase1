@@ -1,45 +1,81 @@
-import React from 'react';
-import { useContext } from 'react';
-import { Link } from "react-router-dom"
 
-const Cart = () => {
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import CartList from './CartList';
+import CartContext from './contexts/Cart';
 
-    const { ordenes, removeItem, clear } = useContext()
+export default function Cart() {
+    
+    const { getTotal, checkCartForStock, Cart } = useContext(CartContext);
+    
+    const [purchaseState, setPurchaseState] = useState(false);
+    
+    const history = useHistory();
 
-    console.log(ordenes)
+    useEffect(() => {
+        async function checkCartStock() {
+            if (
+                purchaseState === false &&
+                (await checkCartForStock()) === true
+            ) {
+                setPurchaseState(true);
+            } else if (
+                purchaseState === true &&
+                (await checkCartForStock()) === false
+            ) {
+                setPurchaseState(false);
+            }
+        }
+        if (Cart.length > 0) {
+            checkCartStock();
+        }
+    }, [Cart]);
+
     return (
-        <div>
-            {!ordenes.length &&
-                <div className="m-5 p-5 text-center">
-                    <h1>Carrito de compras</h1>
-                    <p>¡No hay productos agregados!</p>
-                    <Link className="btn btn-dark" to="/">Volver a Home</Link>
-                </div>}
-            {ordenes.map(orden => {
-                return (
-                    <div>
-                        <div className="d-flex justify-content-around flex-wrap mt-5">
-                            <div className="card border-secondary mb-3 m-5 col-xl-3 col-md-4 col-sm-6">
-                                <div className="card-header text-center">Productos</div>
-                                <div className="card-body text-secondary">
-                                    <h5 className="card-title text-center">{orden.producto.title}</h5>
-                                    <img src={orden.producto.pictureUrl} className="card-img-top" alt="producto"></img>
-                                    <p className="card-text text-center">{orden.producto.description}</p>
-                                    <p className="card-text text-center">Precio unitario: {orden.producto.price}</p>
-                                    <p className="card-text text-center">Precio total: ${orden.producto.price * orden.cantidad}</p>
+        <div className='container'>
+            <div className='row h-100'>
+                <div className='py-2 col-12 d-flex flex-column justify-content-between'>
+                    <div className='row mb-5 gy-2 h-100 align-items-center align-content-start'>
+                        <CartList listModel={2} />
+                    </div>
+                    {(Cart.length > 0) && (getTotal() > 0) ? (
+                        <div className='row align-items-center'>
+                            <div className='col-6'>
+                                <div className='row'>
+                                    <p className='m-0 text-start fs-5'>Total</p>
                                 </div>
-                                <div className="d-grid gap-2">
-                                    <button className="btn btn-dark" onClick={() => removeItem(orden.producto.id)}>Borrar Productos</button>
+                            </div>
+                            <div className='col-4'>
+                                <div className='row'>
+                                    <p className='m-0 text-end price fs-5'>
+                                        {getTotal()} USD$
+                                    </p>
+                                </div>
+                            </div>
+                            <div className='col-2'>
+                                <div className='row'>
+                                    {purchaseState === true ? (
+                                        <button
+                                            onClick={() => {
+                                                history.push('/Checkout');
+                                            }}
+                                            className={`btn btn-primary w-100`}
+                                        >
+                                            Checkout
+                                        </button>
+                                    ) : (
+                                        <button
+                                            className={`btn btn-primary w-100 disabled`}
+                                        >
+                                            Checkout
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                )
-
-            })}
+                    ) : null}
+                </div>
+            </div>
         </div>
     );
 }
-
-export default Cart;

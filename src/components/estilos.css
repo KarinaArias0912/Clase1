@@ -15,9 +15,8 @@ a{
 }
 
 .carritoContainer{
-    display: flex;
-    justify-content: left;
-}
+    padding: 2rem;
+  }
 
 .textoParrafo{
     text-align: center;
